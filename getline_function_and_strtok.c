@@ -25,6 +25,7 @@ int main(int argc, char *argv[], char *envp[])
 		getline(&blah, &a, stdin);
 		
 		char **token = tokeniser(blah, delim);
+		
 		printf("check 10\n");	
 		check = execve(token[0], token, &envir);
 		printf("check 11 = %d\n", check);
@@ -43,7 +44,7 @@ char **tokeniser(char *str, char *delim)
 	int len = 0;
 	int i = 0;
 
-	token = malloc(sizeof(*token) * args);
+	token = malloc(sizeof(*token) * (args + 1));
 	printf("check 2\n");
 
 	for (i = 0; i < args; i++)
@@ -65,6 +66,7 @@ char **tokeniser(char *str, char *delim)
 		token[i] = tmp;
 		printf("check 9\n");
 	}
+	token[i] = NULL;
 	printf("check 5\n");
 	return (token);
 
