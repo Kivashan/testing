@@ -16,6 +16,8 @@ int main(int argc, char *argv[], char *envp[])
 	size_t a = 1024;
 	char *delim = " ";
 	int check = 50;
+	char *envir = "/usr/bin";
+
 	blah = malloc(sizeof(char) * a);
 	while (1)
 	{
@@ -24,7 +26,7 @@ int main(int argc, char *argv[], char *envp[])
 		
 		char **token = tokeniser(blah, delim);
 		printf("check 10\n");	
-		check = execve(*token, token, envp);
+		check = execve(token[0], token, &envir);
 		printf("check 11 = %d\n", check);
 
 	}
