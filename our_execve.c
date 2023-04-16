@@ -11,7 +11,7 @@ int our_execve(char *tokens[], char *environ[])
 
 	while (path_token[i])
 	{
-		path_name = stringconcat(path_token[i], tokens[i]);
+		path_name = stringconcat(path_token[i], cp_cmd);
 		tokens[0] = path_name;
 		execve(tokens[0], tokens, environ);
 		i++;
