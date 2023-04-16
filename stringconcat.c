@@ -19,7 +19,7 @@ char *stringconcat(char *str1, char *str2)
 
 	for (j = 0; str2[j]; j++)
 		new[i + j] = str2[j];
-	new[j] = '\0';
+	new[i + j] = '\0';
 	_puts(new);
 	_putchar('\n');
 	return (new);
