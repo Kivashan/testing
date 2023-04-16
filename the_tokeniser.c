@@ -5,6 +5,7 @@ char **the_tokeniser(char *cmd, char *delim)
 	char **tokens;
 	char *tmp;
 	int args = 0, len = 0, i = 0;
+	int j = 0;
 
 	if (!cmd)
 		return (NULL);
@@ -22,11 +23,17 @@ char **the_tokeniser(char *cmd, char *delim)
 			tmp = strtok(cmd, delim);
 		else
 			tmp = strtok(NULL, delim);
+
 		len = stringlen(tmp);
 		tokens[i] = malloc(sizeof(char) * (len + 1));
 		if (!tokens[i])
 			return (NULL);
-		tokens[i] = tmp;
+		
+		while (j = 0; j < len; j++)
+		{
+			tokens[i][j] = tmp[j];
+		}
+		tokens[i][j] = '\0';
 	}
 	tokens[i] = NULL;
 	return (tokens);
