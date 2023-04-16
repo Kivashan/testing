@@ -3,7 +3,7 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	char *cmd;
-	char *prompt = "$";
+	char *prompt = "$ ";
 	int retval, retvale = 0;
 	size_t bytes = 1024;
 	char **tokens;
