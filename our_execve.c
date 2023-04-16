@@ -11,8 +11,10 @@ int our_execve(char *tokens[], char *environ[])
 
 	while (path_token[i])
 	{
-		path_name = malloc(sizeof(char) * ((stringlen(cp_cmd)) + (stringlen(path_token[i]) + 2);
+		path_name = stringconcat(path_token[i], tokens[i]);
+		tokens[0] = path_name;
 		execve(tokens[0], tokens, environ);
 		i++;
+	}
 	return (-1);
 }

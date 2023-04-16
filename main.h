@@ -12,6 +12,8 @@ int _puts(char *);
 int stringlen(char *);
 char *stringcpy(char *);
 int no_of_args(char *, char *);
+char *stringconcat(char *str1, char *str2);
+char *getpath(char **envr);
 
 char **the_tokeniser(char *, char *);
 int our_execve(char **, char **);
