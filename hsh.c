@@ -35,7 +35,7 @@ int main(int argc, char *argv[], char *envp[])
 		while (tokens[i])
 		{
 			_puts(tokens[i]);
-			_putchar('\0');
+			_putchar('\n');
 			i++;
 		}
 	}
