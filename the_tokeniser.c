@@ -23,7 +23,7 @@ char **the_tokeniser(char *cmd, char *delim)
 			tmp = strtok(cmd, delim);
 		else
 			tmp = strtok(NULL, delim);
-
+		_puts(tmp);
 		len = stringlen(tmp);
 		tokens[i] = malloc(sizeof(char) * (len + 1));
 		if (!tokens[i])
