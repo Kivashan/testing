@@ -25,20 +25,13 @@ int main(int argc, char *argv[], char *envp[])
 		cmd[stringlen(cmd) - 1] = '\0';
 		tmp = stringcpy(cmd);
 		tokens = the_tokeniser(cmd, delim);
-		
-//		retvale = execve(tokens[0], tokens, environ);
-		retvale = our_execve(tokens, environ);
+		if (file_check(tokens, environ) == 0)	
+			retvale = our_execve(tokens, environ);
 		
 /*		check the error on linux and modify our error message*/
 		if (retvale == -1)
 			_puts("Command not found\n");
 
-	/*	while (tokens[i])
-		{
-			_puts(tokens[i]);
-			i++;
-		}
-		*/
 	}
 
 	return (0);

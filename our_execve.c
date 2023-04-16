@@ -9,6 +9,8 @@ int our_execve(char *tokens[], char *environ[])
 	path_token = the_tokeniser(path, delim);
 	cp_cmd = stringcpy(tokens[0]);
 
+	execve(tokens[0], tokens, environ);
+
 	while (path_token[i])
 	{
 		path_name = stringconcat(path_token[i], cp_cmd);
