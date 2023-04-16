@@ -29,7 +29,7 @@ char **the_tokeniser(char *cmd, char *delim)
 		if (!tokens[i])
 			return (NULL);
 		
-		while (j = 0; j < len; j++)
+		for (j = 0; j < len; j++)
 		{
 			tokens[i][j] = tmp[j];
 		}
