@@ -9,7 +9,8 @@ int main(int argc, char *argv[], char *envp[])
 	char **tokens;
 	char *delim = " ";
 	extern char **environ;
-	
+	char *tmp;
+
 	while(1)
 	{
 		int i = 0;
@@ -22,7 +23,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (retval == -1)
 			_puts("Error reading command line");
 	//	_puts(cmd);
-
+		tmp = stringcpy(cmd);
 		tokens = the_tokeniser(cmd, delim);
 		
 		/*retvale = our_execve(tokens, environ);

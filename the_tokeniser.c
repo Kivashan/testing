@@ -18,11 +18,15 @@ char **the_tokeniser(char *cmd, char *delim)
 	for (i = 0; i < args; i++)
 	{
 		len = 0;
-		tmp = strtok(cmd, delim);
+		if (i == 0)
+			tmp = strtok(cmd, delim);
+		else
+			tmp = strtok(NULL, delim);
 		len = stringlen(tmp);
 		tokens[i] = malloc(sizeof(char) * (len + 1));
 		if (!tokens[i])
 			return (NULL);
+		tokens[i] = tmp;
 	}
 	tokens[i] = NULL;
 	return (tokens);
