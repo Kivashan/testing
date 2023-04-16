@@ -23,7 +23,6 @@ int main(int argc, char *argv[], char *envp[])
 		if (retval == -1)
 			_puts("Error reading command line");
 		cmd[stringlen(cmd) - 1] = '\0';
-		_puts(cmd);
 		tmp = stringcpy(cmd);
 		tokens = the_tokeniser(cmd, delim);
 	
@@ -37,7 +36,6 @@ int main(int argc, char *argv[], char *envp[])
 	/*	while (tokens[i])
 		{
 			_puts(tokens[i]);
-			_putchar('\n');
 			i++;
 		}
 		*/
