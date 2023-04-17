@@ -27,6 +27,7 @@ int main(int argc, char *argv[], char *envp[])
 		tokens = the_tokeniser(cmd, delim);
 		if (file_check(tokens, environ) == 0)
 		{
+			int status;
 			pid = fork();
 			if (pid == 0)
 				retvale = our_execve(tokens, environ);
@@ -36,7 +37,9 @@ int main(int argc, char *argv[], char *envp[])
 				return (1);
 			}
 			else
-				wait(&retvale);
+			{
+				wait(&status);
+			}
 		}
 		else
 			cmd_not_found_error(tokens[0]); /* error message to match linux */

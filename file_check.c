@@ -32,7 +32,7 @@ int file_check(char *tokens[], char *environ[])
 		}
 		closedir(fd);
 	}
-	else if ((file_finder(tokens, environ)) == 0);
-		return (0);
+	/*else if ((file_finder(tokens, environ)) == 0);
+		return (0);*/
 	return (-1);
 }
