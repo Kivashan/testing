@@ -3,7 +3,7 @@
 int main(int argc, char *argv[], char *envp[])
 {
 	char *cmd;
-	int retval, retvale = 0;
+	int retval, retvale = 0, pid;
 	size_t bytes = 1024;
 	char **tokens;
 	char *delim = " ";
@@ -25,8 +25,19 @@ int main(int argc, char *argv[], char *envp[])
 		/*cmd[stringlen(cmd) - 1] = '\0';*/
 		tmp = stringcpy(cmd);
 		tokens = the_tokeniser(cmd, delim);
-		if (file_check(tokens, environ) == 0)	
-			retvale = our_execve(tokens, environ);
+		if (file_check(tokens, environ) == 0)
+		{
+			pid = fork();
+			if (pid == 0)
+				retvale = our_execve(tokens, environ);
+			else if (pid == -1)
+			{
+				perror("Error:");
+				return (1);
+			}
+			else
+				wait(&retvale);
+		}
 		else
 			cmd_not_found_error(tokens[0]); /* error message to match linux */
 	}
