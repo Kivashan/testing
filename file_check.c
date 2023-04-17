@@ -27,9 +27,7 @@ int file_check(char *tokens[], char *environ[])
 			cp_cmd2[i] = '\0';
 			i--;
 			len2++;
-			printf("%d\n", len2);
 		}
-		printf("%s\n", cp_cmd2);
 		filename = malloc(sizeof(char) * (len2 + 1));
 		get_filename(cp_cmd, filename, len - 1, &pos);
                 filename[pos] = '\0';
