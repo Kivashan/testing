@@ -5,7 +5,7 @@
 int file_check(char *tokens[], char *environ[])
 {
 	char *cp1, *cp2, *path_name, **path_token, *delim = ":", *filename;
-	int len = 0, pos = 0, len2 = 0;
+	int len = 0, pos = 0, len2 = 0, i;
 	DIR *fd;
 	struct dirent *entry;
 
@@ -28,11 +28,11 @@ int file_check(char *tokens[], char *environ[])
 		while ((entry = readdir(fd)) != NULL)
 		{
 			if ((strcmp(entry->d_name, filename)) == 0)
-			{
 				return (0);
-			}
 		}
 		closedir(fd);
 	}
+	else if ((file_finder(tokens, environ)) == 0);
+		return (0);
 	return (-1);
 }
