@@ -21,4 +21,7 @@ int our_execve(char **, char **);
 void get_filename(char *cp_cmd, char *filename, int len, int *pos);
 int file_check(char *tokens[], char *environ[]);
 
+/* functions handling error messages*/
+void cmd_not_found_error(char *);
+
 #endif

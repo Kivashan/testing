@@ -7,7 +7,7 @@ void get_filename(char *cp_cmd, char *filename, int len, int *pos);
 
 int file_check(char *tokens[], char *environ[])
 {
-	char *cp_cmd, *path_name, **path_token, *path, *delim = ":", *filename;
+	char *cp_cmd, *cp_cmd2, *path_name, **path_token, *path, *delim = ":", *filename;
 	int i = 0, len = 0, pos = 0, len2 = 0;
 	DIR *fd;
 	struct dirent *entry;
@@ -15,7 +15,7 @@ int file_check(char *tokens[], char *environ[])
 	path = getpath(environ);
 	path_token = the_tokeniser(path, delim);
 	cp_cmd = stringcpy(tokens[0]);
-	char *cp_cmd2 = stringcpy(tokens[0]);
+	cp_cmd2 = stringcpy(tokens[0]);
 	len = stringlen(cp_cmd2);
 
 	if (cp_cmd[0] == '/')
@@ -37,21 +37,17 @@ int file_check(char *tokens[], char *environ[])
 		_putchar('\n');
 		fd = opendir(cp_cmd2);
 		if (fd == NULL)
-			printf("opendir fail\n");
+			return (-1);
 		i = 0;
 		while ((entry = readdir(fd)) != NULL)
 		{
-			printf("%d\n", i);
-			i++;
 			if ((strcmp(entry->d_name, "ls")) == 0)
 			{
-				printf("File found!\n");
 				return (0);
 			}
 		}
 		closedir(fd);
 	}
-	printf("File name NOT found\n");
 	return (-1);
 }
 void get_filename(char *cp_cmd, char *filename, int len, int *pos)

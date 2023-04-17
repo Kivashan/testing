@@ -27,11 +27,8 @@ int main(int argc, char *argv[], char *envp[])
 		tokens = the_tokeniser(cmd, delim);
 		if (file_check(tokens, environ) == 0)	
 			retvale = our_execve(tokens, environ);
-		
-/*		check the error on linux and modify our error message*/
-		if (retvale == -1)
-			_puts("Command not found\n");
-
+		else
+			cmd_not_found_error(tokens[0]); /* error message to match linux */
 	}
 
 	return (0);
