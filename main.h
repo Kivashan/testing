@@ -27,6 +27,6 @@ ssize_t our_getline(char **lineptr, size_t *n, int stream);
 /*file_finder - similar to file_check but handles relative path*/
 int file_finder(char *tokens[], char *environ[]);
 /* functions handling error messages*/
-void cmd_not_found_error(char *);
+void cmd_not_found_error(char *argv, char *token);
 
 #endif

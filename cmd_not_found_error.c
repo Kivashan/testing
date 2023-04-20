@@ -7,9 +7,10 @@
  * Return: Void
  */
 
-void cmd_not_found_error(char *token)
+void cmd_not_found_error(char *argv, char *token)
 {
-	_puts("bash: ");
+	_puts(argv);
+	_puts(": 1: ");
 	_puts(token);
-	_puts(": command not found\n");
+	_puts(": not found\n");
 }
