@@ -1,14 +1,14 @@
 #include "main.h"
 
-int file_check(char *tokens)
+int file_check(char *tokens[])
 {
 	char **path = NULL;
 	struct stat st;
 	int i = 0, size = 0;
 
-	if (tokens[0] == '/')
+	if (tokens[0][0] == '/')
 	{
-		if (stat(tokens, &st) == 0)
+		if (stat(tokens[0], &st) == 0)
 			return (0);
 		else
 			return (-1);

@@ -22,7 +22,7 @@ char *_strcpy(char *dest, char *src);
 char *_getenv(char *var);
 char *_strconcat(char *str1, char *str2);
 char **waymaker(int *i);
-char **abs_path(char *token);
-int file_check(char *tokens);
+char **abs_path(char *token[]);
+int file_check(char *tokens[]);
 
 #endif

@@ -22,7 +22,7 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char *argv[],__
 		getline_cp = _strdup(buffer);
 		args = no_of_args(buffer, delim);
 		tokens = word_split(getline_cp, delim);
-		retval = file_check(tokens[0]);
+		retval = file_check(tokens);
 		if (retval == 0)
 			printf("File found: %s\n", tokens[0]);
 		else
