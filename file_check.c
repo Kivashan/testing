@@ -2,7 +2,7 @@
 
 int file_check(char *tokens[])
 {
-	char **path = NULL;
+	char **path = NULL, *tmp;
 	struct stat st;
 	int i = 0, size = 0;
 
@@ -22,14 +22,15 @@ int file_check(char *tokens[])
 	{
 		if (stat(path[i], &st) == 0)
 		{
+			tmp = tokens[0];
+			tokens[0] = _strdup(path[i]);
+			free(tmp);
 			free_grid(path, size);
 			return (0);
 		}
 		i++;
 	}
 	
-	printf("path[0] = %s\n", path[0]);
-
 	free_grid(path, size);
 
 	return (-1);

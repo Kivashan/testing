@@ -24,5 +24,21 @@ char *_strconcat(char *str1, char *str2);
 char **waymaker(int *i);
 char **abs_path(char *token[]);
 int file_check(char *tokens[]);
+void exec_builtin(char **, char **);
+void our_exit(char **tok, char **env);
+void print_env(char **, char **env);
+int stringcomp(char *, char *);
+int our_execve(char *tokens[], char *environ[], char *fn);
+/**
+ * struct get_inbuilt - holds a string and a function pointer
+ * @cmd: command
+ * @func: pointer to function corresponding to command
+ */
+typedef struct get_inbuilt
+{
+        char *cmd;
+        void (*func)(char **tokens, char **env);
+} get_func;
+void cmd_not_found_error(char *argv, char *token);
 
 #endif

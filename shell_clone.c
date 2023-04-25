@@ -1,14 +1,14 @@
 #include "main.h"
 
-int main(__attribute__((unused))int argc, __attribute__((unused))char *argv[],__attribute__((unused))char *env[])
+int main(__attribute__((unused))int argc, char *argv[], char *env[])
 {
 	size_t bytes;
 
 	while (1)
 	{
 		char *buffer = NULL, *delim = " ", *getline_cp;
-		int mode = 0, args = 0, retval = 0;
-		char **tokens = NULL;
+		int mode = 0, args = 0, retval = 0, pid, status;
+		char **tokens = NULL, *filename;
 
 		mode = isatty(STDIN_FILENO);
 		if (mode)
@@ -22,14 +22,35 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char *argv[],__
 		getline_cp = _strdup(buffer);
 		args = no_of_args(buffer, delim);
 		tokens = word_split(getline_cp, delim);
+		filename = _strdup(tokens[0]);
+		exec_builtin(tokens, env);
 		retval = file_check(tokens);
-		if (retval == 0)
-			printf("File found: %s\n", tokens[0]);
-		else
-			printf("File not found: %s\n", tokens[0]);
-
-		free(buffer);
+		printf("%s\n", tokens[0]);
+/*
+ *		if (retval == 0)
+ *		{
+ */			pid = fork();
+			if (pid == -1)
+			{
+				perror("Error:");
+				exit(98);
+			}
+			else if (pid == 0)
+			{
+				if ((retval == 0) && ((stringcomp(tokens[0], "env")) != 0))
+					our_execve(tokens, env, tokens[0]);
+				else
+					cmd_not_found_error(argv[0], filename);
+			}
+			else
+				wait(&status);
+		
+/*
+ * 		else
+*			cmd_not_found_error(argv[0], filename);
+*/		free(buffer);
 		free_grid(tokens, args);
+		free(filename);
 		free(getline_cp);
 	}
 	return(0);
