@@ -6,7 +6,7 @@
  *
  * Return: length of string on success, -1 on error
  */
-int stringlen(char *str)
+int _strlen(char *str)
 {
 	int i = 0;
 
