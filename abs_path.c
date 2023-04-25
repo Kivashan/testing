@@ -33,11 +33,9 @@ char **abs_path(char *token[])
 			l++;
 		}
 		absolute_path[j][k] = '\0';
-		printf("absolute_path = %s\n", absolute_path[j]);
 		j++;
 	}
 	absolute_path[j] = NULL;
 	free_grid(path, i);
 	return (absolute_path);
-
 }	
